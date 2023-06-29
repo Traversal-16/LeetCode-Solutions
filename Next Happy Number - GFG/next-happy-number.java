@@ -55,6 +55,6 @@ class Solution
         {
             if (happy(i)==true) return i;
         }
-        return 1;
+        return -236;
     }
 }
