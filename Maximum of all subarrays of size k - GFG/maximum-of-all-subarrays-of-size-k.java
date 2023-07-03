@@ -55,19 +55,18 @@ class Solution
     //Function to find maximum of each subarray of size k.
     static ArrayList <Integer> max_of_subarrays(int arr[], int n, int k)
     {
-        // Your code here
         ArrayList<Integer> ans=new ArrayList <>();
         ArrayDeque<Integer> dq=new ArrayDeque <>();
-        for (int i=0;i<arr.length;i++)
+        
+        for (int i=0;i<n;i++)
         {
-            while (!dq.isEmpty () && dq.peek()==i-k) dq.poll();
+            while (!dq.isEmpty () && dq.peek ()==i-k) dq.poll ();
+            while (!dq.isEmpty () && arr[dq.peekLast()]<=arr[i]) dq.pollLast ();
             
-            while (!dq.isEmpty () && arr[dq.peekLast ()]<=arr[i]) dq.pollLast();
-            
-            dq.offer(i);
+            dq.offer (i);
             if (i>=k-1)
             {
-                ans.add(arr[dq.peek()]);
+                ans.add(arr[dq.peek ()]);
             }
         }
         return ans;
