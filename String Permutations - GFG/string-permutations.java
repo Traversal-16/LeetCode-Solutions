@@ -34,66 +34,69 @@ class Main {
 //User function Template for Java
 
 
-// class Solution
-// {
-//     public void fun (String S,boolean vis[],ArrayList <Character> arr,ArrayList <String> ans)
-//     {
-//         if (arr.size ()==S.length ())
-//         {
-//             String temp="";
-//             for (char k:arr)
-//             {
-//                 temp+=k;
-//             }
-//             ans.add (temp);
-//             return;
-//         }
-        
-//         for (int i=0;i<S.length ();i++)
-//         {
-//             arr.add (S.charAt (i));
-//             vis[i]=true;
-            
-//             fun (S,vis,arr,ans);
-//             vis[i]=false;
-//             arr.remove (arr.size()-1);
-//         }
-//     }
-//     public ArrayList<String> permutation(String S)
-//     {
-//         //Your code here
-//         ArrayList<Character> arr=new ArrayList <>();
-//         ArrayList <String> ans=new ArrayList <>();
-//         boolean vis[]=new boolean [S.length ()];
-//         fun (S,vis,arr,ans);
-//         Collections.sort (ans);
-//         return ans;
-//     }
-	   
-// }
 class Solution
 {
-    ArrayList<String> res;
-    public ArrayList<String> permutation(String S)
+    public void fun (String S,boolean vis[],ArrayList <Character> arr,ArrayList <String> ans)
     {
-        res=new ArrayList<>();
-        fun(S.toCharArray(),new char[S.length()],0);
-        Collections.sort(res);
-        return res;
-    }
-    public void fun(char[] s, char[] temp, int x){
-        if(x>=s.length){
-            res.add(new String(temp));
+        if (arr.size ()==S.length ())
+        {
+            String temp="";
+            for (char k:arr)
+            {
+                temp+=k;
+            }
+            ans.add (temp);
             return;
         }
-        for(int i=0;i<s.length;i++){
-            if(s[i]!='-'){
-                temp[x]=s[i];
-                char prev=s[i];
-                s[i]='-';
-                fun(s,temp,x+1);
-                s[i]=prev;
+        
+        for (int i=0;i<S.length ();i++)
+        {
+            if (vis[i]==false)
+            {
+                arr.add (S.charAt (i));
+            vis[i]=true;
+            
+            fun (S,vis,arr,ans);
+            vis[i]=false;
+            arr.remove (arr.size()-1);
             }
         }
     }
+    public ArrayList<String> permutation(String S)
+    {
+        //Your code here
+        ArrayList<Character> arr=new ArrayList <>();
+        ArrayList <String> ans=new ArrayList <>();
+        boolean vis[]=new boolean [S.length ()];
+        fun (S,vis,arr,ans);
+        Collections.sort (ans);
+        return ans;
+    }
+	   
 }
+// class Solution
+// {
+//     ArrayList<String> res;
+//     public ArrayList<String> permutation(String S)
+//     {
+//         res=new ArrayList<>();
+//         fun(S.toCharArray(),new char[S.length()],0);
+//         Collections.sort(res);
+//         return res;
+//     }
+//     public void fun(char[] s, char[] temp, int x){
+//         if(x>=s.length){
+//             res.add(new String(temp));
+//             return;
+//         }
+//         for(int i=0;i<s.length;i++){
+//             if(s[i]!='-'){
+//                 temp[x]=s[i];
+//                 char prev=s[i];
+//                 s[i]='-';
+//                 fun(s,temp,x+1);
+//                 s[i]=prev;
+//             }
+//         }
+//     }
+// }
