@@ -39,11 +39,55 @@ class Solution {
     int count(int[] arr, int n, int x) 
     {
         // code here
-        int count=0;
-        for (int a=0;a<n;a++)
+        int first=-1;
+        int low=0;
+        int high=n-1;
+        while (low<=high)
         {
-            if (arr[a]==x) count++;
+            int mid=(int) (low+high)/2;
+            
+            if (arr[mid]==x)
+            {
+                first=mid;
+                low=mid+1;
+            }
+            else if (arr[mid]>x)
+            {
+                high=mid-1;
+            }
+            else
+            {
+                low=mid+1;
+            }
         }
-        return count;
+        
+        int last=-1;
+        low=0;
+        high=n-1;
+        while (low<=high)
+        {
+            int mid=(int) (low+high)/2;
+            
+            if (arr[mid]==x)
+            {
+                last=mid;
+                high=mid-1;
+            }
+            else if (arr[mid]>x)
+            {
+                high=mid-1;
+            }
+            else
+            {
+                low=mid+1;
+            }
+        }
+        //System.out.println (first);
+        //System.out.println (last);
+        if (first==-1 || last==-1)
+        {
+            return 0;
+        }
+         return first-last+1;
     }
 }
