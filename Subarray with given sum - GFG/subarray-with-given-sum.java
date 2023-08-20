@@ -42,6 +42,9 @@ class Solution
     static ArrayList<Integer> subarraySum(int[] arr, int n, int s) 
     {
         // Your code here
+        
+        //Time Complexity ->O(2*N);
+        //Space Complexity->O(1);
         ArrayList<Integer> list=new ArrayList <>();
         int sum=0;
         int start=0;
