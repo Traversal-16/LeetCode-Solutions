@@ -89,22 +89,16 @@ class GfG
     Node deleteNode(Node head, int x)
     {
 	//Your code here
-	Node save=head.next;
 	Node cur=head;
 	if (x==1)
 	{
-	    cur.next=null;
-	    head=save;
-	    return head;
+	    return head.next;
 	}
-	while (cur!=null && save!=null && x>2)
+	for (int i=1;i<x-1;i++)
 	{
-	    cur=save;
-	    save=save.next;
-	    x-=1;
-    }
-    cur.next=save.next;
-    
+	    cur=cur.next;
+	}
+    cur.next=cur.next.next;
     return head;
     }
 }
