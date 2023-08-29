@@ -94,7 +94,7 @@ class GfG
 	{
 	    return head.next;
 	}
-	for (int i=1;i<x-1;i++)
+	for (int i=1;i<=x-2;i++)
 	{
 	    cur=cur.next;
 	}
