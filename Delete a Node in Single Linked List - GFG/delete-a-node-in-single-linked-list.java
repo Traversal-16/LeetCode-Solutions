@@ -88,7 +88,7 @@ class GfG
 {
     Node deleteNode(Node head, int x)
     {
-	// Your code here
+	//Your code here
 	Node save=head.next;
 	Node cur=head;
 	if (x==1)
